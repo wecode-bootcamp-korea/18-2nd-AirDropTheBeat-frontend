@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# 에어비엔비 클론 프로젝트 (AirDropTheBeat)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ⚙️ CRA 초기세팅
 
-## Available Scripts
+- `npx create-react-app` 설치 
+- **Third Party Library** : `react-router-dom`, `node-sass@4.14.1`, `react-icons`
+- `.eslintrc`,`.prettierrc` 설정 
+- `common.scss` , `reset.scss` 설정
+- mock data를 활용하기 위한 **data**폴더 생성
+- `react-router-dom` 을 사용해서 `Routes.js` 설정 
 
-In the project directory, you can run:
+## ⏳ 프로젝트 기간
 
-### `npm start`
+2021.03.29 ~ 2021.04.09
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 👨‍👩‍👧‍👦 팀원 작업 파트
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **김상연** - 회원가입 / 로그인 레이아웃 및 로직 구현
+- **김미현** - 메인 페이지 레이아웃 및 로직 구현 , navbar 레이아웃 및 로직 구현
+- **윤찬호** - 숙소 리스트 페이지 레이아웃 및 로직 구현
+- **권유진** - 숙소 상세페이지
 
-### `npm test`
+### 미배정   
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 예약하기, 마이페이지, 찜목록, footer
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🥇 기술 스텍
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`HTML`, `JavaScript(ES6+)`, `React`, `SCSS`
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
