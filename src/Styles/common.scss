@@ -1,0 +1,22 @@
+@import './reset.scss';
+
+a {
+  text-decoration: none;
+  color: #eeeeee;
+}
+
+%themeColor {
+  color: #fab005;
+}
+
+%flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
