@@ -1,0 +1,51 @@
+{
+    "checkin_date": "2021-04-05",
+    "checkout_date": "2021-04-06",
+    "adult": "2",
+    "child": 0,
+    "baby": 0,
+    "number_of_guests": 2,
+    "price": "100892.00",
+    "discount_rate": "0.30",
+    "title": "PLTown[Up to 2persons] 스트레스와 피로를 풀며 안정을 취할 수 있는 집",
+    "city": "서울시",
+    "district": "양천구",
+    "address_line": "목동",
+    "images_url": [
+    "https://a0.muscache.com/im/pictures/349a3355-bab6-4ab2-a8ab-239a635466ad.jpg?im_w=1200",
+    "https://a0.muscache.com/im/pictures/d4fc6fc9-cb80-4cd4-94c8-bc3c0694ac87.jpg?im_w=1440",
+    "https://a0.muscache.com/im/pictures/c82170f2-3f9b-40e6-9f0c-e92a611d918f.jpg?im_w=1440",
+    "https://a0.muscache.com/im/pictures/24914666-e45a-4787-8980-73a48cea4b3a.jpg?im_w=1440",
+    "https://a0.muscache.com/im/pictures/4f6d1a70-e2fc-421b-b287-0b805177012e.jpg?im_w=1440",
+    "https://a0.muscache.com/im/pictures/4a6ecd31-9b36-4477-85ba-f46ffb9d9de7.jpg?im_w=1440"
+    ],
+    "type": "집 전체",
+    "type_description": "집 전체를 단독으로 사용합니다",
+    "maximum_people": 2,
+    "bedroom": 1,
+    "bathroom": 1,
+    "bed": 2,
+    "checkin_type": "호스트체크인",
+    "checkin_type_description": "호스트를 이용해 체크인 하세요.",
+    "description": "용왕산 아래에 있는 50년된 한국 전통주택입니다. 이에 아늑함을 느끼실 수 있도록 최선을 다해 준비하였으며, 편안한 교통과 한강과 근접, 그리고 단독 집 전체를사용하는 여유를 누려보세요\n\n\nThis house is located under the Mt. Yongwangsan and built in 1970's. So, its old Korea traditional house will make you feel cozy and fresh air.\n\n\nA private whole house and convenient transportation will be satisfied with you.\n\n\n\n\n자가격리 가능한 집입니다.\n매번 방역을 합니다.",
+    "conveniences": [
+    "주방",
+    "무선인터넷",
+    "세탁기"
+    ],
+    "lat": "37.53804910",
+    "lng": "126.86316300",
+    "checkin_time": "16:00:00",
+    "checkout_time": "12:00:00",
+    "room_rules": [
+    "반려동물 가능",
+    "흡연 가능"
+    ],
+    "host_id": 3,
+    "host_name": "빈",
+    "host_image": null,
+    "host_language": "한국어",
+    "host_available_hour": "12:00~22:00"
+    }
+    
+    
