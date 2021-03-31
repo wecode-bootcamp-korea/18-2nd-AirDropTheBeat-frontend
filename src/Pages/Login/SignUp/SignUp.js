@@ -1,16 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import LoginTopNav from './LoginTopNav';
-import LoginMain from './LoginMain';
+import SignUpInputTotal from './SignUpInputTotal';
+import SignUpTopNav from './SignUpTopNav';
 
-function Login({ isOpen, isOpenSignUp, isClose }) {
+function SignUp(props) {
+  const { isOpen, isClose } = props;
+
   return (
     <>
       {isOpen && (
         <Modal>
           <LoginModal>
-            <LoginTopNav isOpen={isOpen} isClose={isClose} />
-            <LoginMain isOpenSignUp={isOpenSignUp} />
+            <SignUpTopNav isOpen={isOpen} isClose={isClose} />
+            <Main>
+              <SignUpInputTotal />
+            </Main>
           </LoginModal>
         </Modal>
       )}
@@ -38,4 +42,11 @@ const LoginModal = styled.div`
   background-color: white;
 `;
 
-export default Login;
+const Main = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`;
+
+export default SignUp;

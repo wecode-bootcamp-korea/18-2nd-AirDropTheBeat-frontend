@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import SelectOption from './SelectOption';
 import logo from './logo.png';
 import logoY from './logoY.png';
+import Login from '../../Pages/Login/Login';
+import SignUp from '../../Pages/Login/SignUp/SignUp';
 import { ImEarth } from 'react-icons/im';
 import { GiHamburgerMenu, GiPianoKeys } from 'react-icons/gi';
 import { ImAngry } from 'react-icons/im';
@@ -24,6 +26,9 @@ export default function Nav() {
   });
   const [navYellow, setNavYellow] = useState(false);
   const [navSearch, setNavSearch] = useState(false);
+
+  const [loginModal, setLoginModal] = useState(false);
+  const [signUpModal, setSignUpModal] = useState(false);
 
   //useHistory()
   const history = useHistory();
@@ -81,9 +86,10 @@ export default function Nav() {
     history.push(`/room/list${query}`);
   };
   // 로그인 로그아웃
-  const handleLogin = () => {
-    localStorage.setItem('token', 'mimilover');
-  };
+  // const handleLogin = () => {
+  //   localStorage.setItem('token', 'mimilover');
+  // };
+
   const handleLogout = () => {
     alert('로그아웃 성공!');
     localStorage.removeItem('token');
@@ -138,8 +144,14 @@ export default function Nav() {
                   </>
                 ) : (
                   <>
-                    <div onClick={handleLogin}>로그인</div>
-                    <div>회원가입</div>
+                    <div onClick={() => setLoginModal(true)}>로그인</div>
+                    <div
+                      onClick={() => {
+                        setSignUpModal(true);
+                      }}
+                    >
+                      회원가입
+                    </div>
                     <div>도움말</div>
                   </>
                 )}
@@ -165,7 +177,6 @@ export default function Nav() {
               setIsSearchMenu={setIsSearchMenu}
               isSearchMenu={isSearchMenu}
               clickSearchComplete={clickSearchComplete}
-              isSearchMenu={isSearchMenu}
               clickSearchMenu={clickSearchMenu}
               navYellow={navYellow}
             />
@@ -173,6 +184,8 @@ export default function Nav() {
         )}
       </NavWrapper>
       {/* <NavPadding navYellow={navYellow}></NavPadding> */}
+      <Login isOpen={loginModal} isOpenSignUp={setSignUpModal} isClose={setLoginModal} />
+      <SignUp isOpen={signUpModal} isClose={setSignUpModal} />
     </>
   );
 }
@@ -223,52 +236,51 @@ const Menu = styled.section`
   .menuRight {
     font-size: 14px;
     font-weight: bold;
-    
+
+    display: flex;
+    align-items: center;
+    div {
       display: flex;
+      padding: 0 10px;
       align-items: center;
+    }
+    .toggle {
+      background: white;
+      color: black;
+      border: 2px solid black;
+      border-radius: 25px;
       div {
+        padding: 7px 2px;
+      }
+      div.popup {
+        z-index: 999;
         display: flex;
-        padding: 0 10px;
-        align-items: center;
-      }
-      .toggle {
-        background: white;
-        color: black;
-        border:2px solid black;
-        border-radius: 25px;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        right: 30px;
+        width: 150px;
+        padding: 10px 0;
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px -1px fergba(50, 50, 50, 0.31);
+        color: #222222;
+        overflow: hidden;
+
         div {
-          padding: 7px 2px;
-          
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          &:hover {
+            background: orange;
+          }
         }
-        div.popup {
-          z-index:9999;
-          display:flex;
-          flex-direction: column;
-          position: absolute;
-          top: 75px;
-          right: 30px;
-          width: 150px;
-          padding: 10px 0;
-          background-color: white;
-          border:1px solid gray;
-          border-radius: 20px;
-          box-shadow: 0px 0px 10px -1px fergba(50, 50, 50, 0.31);
-          color: #222222;
-          overflow: hidden;
-          
-          div{
-            width:100%;
-            display:flex;
-            justify-content:center;
-            &:hover{
-              background:orange;
-            }
-          }
-          &.hide {
-            display: none;
-          }
+        &.hide {
+          display: none;
+        }
       }
-    
+    }
   }
 `;
 
