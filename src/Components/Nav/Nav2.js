@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
-import styled from 'styled-components';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import SelectOption from './SelectOption';
 import logo from './logo.png';
 import logoY from './logoY.png';
+import styled from 'styled-components';
 import { ImEarth } from 'react-icons/im';
 import { GiHamburgerMenu, GiPianoKeys } from 'react-icons/gi';
 import { ImAngry } from 'react-icons/im';
+import { useHistory } from 'react-router';
 import { FaSearch } from 'react-icons/fa';
 
 export default function Nav() {
@@ -22,35 +22,29 @@ export default function Nav() {
     isCalendar: false,
     isLocation: false,
   });
-  const [navYellow, setNavYellow] = useState(false);
+  const [navYellow, setNavYellow] = useState(true);
   const [navSearch, setNavSearch] = useState(false);
-
-  //useHistory()
-  const history = useHistory();
-  // NAV : 스크롤에 따라 다르게 나타내기
+  //마우스 이벤트
   useEffect(() => {
     window.scrollTo(0, 0);
     window.addEventListener('scroll', handleScrollY);
   }, []);
 
-  const _location = useLocation();
-  useEffect(() => {
-    if (_location.pathname !== '/') {
-      setNavYellow(true);
-    }
-  }, [_location]);
-
   const handleScrollY = () => {
-    if (_location.pathname === '/' && window.scrollY < 100) {
-      setNavYellow(false);
+    if (window.scrollY < 100) {
+      // setNavYellow(false);
+      // setNavSearch(false);
+      setNavYellow(true);
       setNavSearch(false);
       return;
     }
-    if (_location.pathname === '/' && window.scrollY >= 100) {
+    if (window.scrollY >= 100) {
       setNavYellow(true);
       return;
     }
   };
+
+  const history = useHistory();
 
   //Search 메뉴 : 나타내기(클릭시, 해당 서치섹션 나타내기)
   const clickSearchMenu = menu => {
@@ -77,7 +71,20 @@ export default function Nav() {
   };
 
   const fetchData = () => {
-    const query = `?city_id=1&district=${location}&checkin=${startDate}&checkout=${endDate}&adult=${adult}&child=${child}&baby=${baby}`;
+    const query = `?location=${location}&chekin=${startDate}&checkout=${endDate}&adults=${adult}&child=${child}&baby=${baby}`;
+    console.log(query);
+    // fetch('http://10.58.4.42/room/list', {
+    //   method: 'GET',
+    // })
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     const check = Object.values(res).filter(i => i.userId === this.state.userId);
+    //     if (check.length) {
+    //       alert('이미 사용중입니다 ☢');
+    //       return;
+    //     }
+    //     alert('사용가능한 아이디입니다');
+    //   });
     history.push(`/room/list${query}`);
   };
   // 로그인 로그아웃
@@ -92,15 +99,10 @@ export default function Nav() {
 
   return (
     <>
-      {navYellow || (
-        <Corona>
-          <span>에어비앤비의 코로나19 대응 방안에 대한 최신 정보를 확인하세요.</span>
-        </Corona>
-      )}
       <NavWrapper navYellow={navYellow}>
         <Menu>
           <div>
-            <img src={navYellow ? logoY : logo} alt="Logo" width="218px" />
+            <img src={logoY} alt="Logo" width="218px" />
           </div>
           {navYellow && !navSearch ? (
             <SimpleSearch onClick={() => setNavSearch(!navSearch)}>
@@ -118,9 +120,9 @@ export default function Nav() {
           )}
           <div className="menuRight">
             <div>
-              <div>호스트 되기</div>
+              <div>호스트될래</div>
               <div>
-                <ImEarth color={navYellow ? 'black' : 'white'} size="16px" />
+                <ImEarth color="black" size="16px" />
               </div>
             </div>
             <div className="toggle" onClick={() => setIsToggleMenu(!isToggleMenu)}>
@@ -192,13 +194,13 @@ const Corona = styled.aside({
 // }));
 const NavWrapper = styled.div(({ navYellow }) => ({
   zIndex: '7',
-  position: navYellow ? 'fixed' : 'relative',
+  position: 'fixed',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
   // height: '90px',
-  backgroundColor: navYellow ? 'white' : 'black',
-  color: navYellow ? 'black' : 'white',
+  backgroundColor: 'white',
+  color: 'black',
   paddingBottom: '10px',
   boxShadow: '2px 7px 21px -3px rgba(67,67,67,0.45)',
   // border: '3px solid pink',
@@ -255,15 +257,6 @@ const Menu = styled.section`
           box-shadow: 0px 0px 10px -1px fergba(50, 50, 50, 0.31);
           color: #222222;
           overflow: hidden;
-          
-          div{
-            width:100%;
-            display:flex;
-            justify-content:center;
-            &:hover{
-              background:orange;
-            }
-          }
           &.hide {
             display: none;
           }
@@ -302,7 +295,7 @@ const RedBtn = styled.div`
   cursor: pointer;
 `;
 const Search = styled.div(({ navYellow }) => {
-  if (navYellow) {
+  if (1) {
     return {
       position: 'static',
       display: 'flex',
@@ -312,13 +305,4 @@ const Search = styled.div(({ navYellow }) => {
       // boxShadow: '0px 10px 10px 1px rgba(67,67,67,0.45)',
     };
   }
-  return {
-    boxShadow: '2px 7px 21px -3px rgba(67,67,67,0.45)',
-    // border: '1px solid pink',
-    borderRadius: '30px',
-    position: 'absolute',
-    top: '70px',
-    left: 'calc(50% - 450px)',
-    color: 'black',
-  };
 });
