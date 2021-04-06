@@ -28,5 +28,5 @@
 
 ## 🥇 기술 스텍
 
-`HTML`, `JavaScript(ES6+)`, `React`, `SCSS`
+`HTML`, `JavaScript(ES6+)`, `React`,`React Hooks`, `SCSS`, `Styled-component`
 
