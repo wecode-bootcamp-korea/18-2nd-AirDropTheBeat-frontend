@@ -16,8 +16,8 @@ const DetailReview = props => {
   const [detail_reviews, setDetailReviews] = useState([]);
 
   useEffect(() => {
-    // fetch(`/room/${props.match.params.id}/review`)
-    fetch('/data/ReviewMockData.json')
+    // fetch('/data/ReviewMockData.json')
+    fetch(`/room/${props.props.match.params.id}/review`)
       .then(res => res.json())
       .then(res => {
         setTotalAverage(res.total_average);

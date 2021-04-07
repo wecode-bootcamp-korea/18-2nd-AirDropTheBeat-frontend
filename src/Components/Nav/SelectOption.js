@@ -3,6 +3,34 @@ import styled from 'styled-components';
 import DatePicker from './DatePicker';
 import { FaSearch } from 'react-icons/fa';
 
+const GU = [
+  '강서구',
+  '양천구',
+  '구로구',
+  '영등포구',
+  '금천구',
+  '관악구',
+  '동작구',
+  '서초구',
+  '마포구',
+  '용산구',
+  '강남구',
+  '은평구',
+  '서대문구',
+  '종로구',
+  '중구',
+  '성동구',
+  '광진구',
+  '송파구',
+  '성북구',
+  '동대문구',
+  '강동구',
+  '강북구',
+  '중랑구',
+  '도봉구',
+  '노원구',
+];
+
 const SelectOption = ({
   location,
   setLocation,
@@ -23,77 +51,17 @@ const SelectOption = ({
 }) => {
   const LOCATION_PICK = (
     <LocationContainer>
-      <div
-        onClick={() => {
-          setLocation('서울시');
-        }}
-      >
-        <span>서울시</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('강남구');
-        }}
-      >
-        <span>강남구</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('강북구');
-        }}
-      >
-        <span>강북구</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('강서구');
-        }}
-      >
-        <span>마서구</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('관악구');
-        }}
-      >
-        <span>관악구</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('광진구');
-        }}
-      >
-        <span>광진구</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('구로구');
-        }}
-      >
-        <span>구로구</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('금천구');
-        }}
-      >
-        <span>금천구</span>
-      </div>
-
-      <div
-        onClick={() => {
-          setLocation('노원구');
-        }}
-      >
-        <span>노원구</span>
-      </div>
+      {GU.map(el => {
+        return (
+          <div
+            onClick={() => {
+              setLocation(`${el}`);
+            }}
+          >
+            <span>{el}</span>
+          </div>
+        );
+      })}
     </LocationContainer>
   );
   const DATE_PICK = (

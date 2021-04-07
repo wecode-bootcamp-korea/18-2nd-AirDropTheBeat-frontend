@@ -4,9 +4,11 @@ import styled from 'styled-components';
 const DetailImg = props => {
   const [images_url, setImagesUrl] = useState('');
 
+  console.log(props);
+
   useEffect(() => {
-    // fetch(`/room/${props.match.params.id}`);
-    fetch('./data/DetailMockData.json')
+    // fetch('./data/DetailMockData.json')
+    fetch(`/room/${props.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         setImagesUrl(res.images_url);

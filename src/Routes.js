@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DetailMain from './Pages/Detail/DetailMain';
 import Lists from './Pages/Lists/Lists';
 import Login from './Pages/Login/Login';
+
 import Main from './Pages/Main/Main';
 import MyPage from './Pages/MyPage/MyPage';
 import Order from './Pages/Order/Order';
@@ -16,7 +17,7 @@ const Routes = () => {
       <Nav />
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route exact path="/detail" component={DetailMain} />
+        <Route exact path="/detail/:id" component={DetailMain} />
         <Route exact path="/test" component={DetailSaveModal} />
         <Route exact path="/lists" component={Lists} />
         <Route exact path="/login" component={Login} />

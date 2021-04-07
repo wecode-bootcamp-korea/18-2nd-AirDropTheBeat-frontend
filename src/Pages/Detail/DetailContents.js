@@ -25,8 +25,8 @@ const DetailContents = props => {
   const [conveniences, setConveniences] = useState('');
 
   useEffect(() => {
-    // fetch(`/room/${props.match.params.id}`);
-    fetch('./data/DetailMockData.json')
+    // fetch('./data/DetailMockData.json')
+    fetch(`/room/${props.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         setHostName(res.host_name);
