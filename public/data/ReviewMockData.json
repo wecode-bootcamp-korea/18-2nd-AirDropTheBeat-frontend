@@ -1,0 +1,33 @@
+{
+    "total_average": 4.64,
+    "counts": 112,
+    "cleanliness": 2.8,
+    "accuracy": 4.6,
+    "communication": 4.3,
+    "location": 4.5,
+    "checkin": 3.5,
+    "satisfaction": 5.0,
+    "detail_reviews" :[
+        {
+            "user_id": 1,
+            "user_name": "국현",
+            "created_at": "2021-03-21T05:31:08.312Z",
+            "user_image": "https://ca.slack-edge.com/TH0U6FBTN-U01J3P63EA0-bef469e8b91e-512",
+            "content": "한번 더 이용하고 싶을만큼 좋은 숙소입니다!!"
+        } ,
+        {
+            "user_id": 2,
+            "user_name": "Yooja",
+            "created_at": "2020-11-25T05:31:08.312Z",
+            "user_image": "https://ca.slack-edge.com/TH0U6FBTN-U01JA7F393K-c8243c3bfa81-512",
+            "content": "저는 여행이 목적이 아니라 개인적 고민이 많이 힐링을 위해 묶었는데 방은 사진과 같이 아늑했고 쾌적해서 지내면서 불편한 점 하나 없었어요 침대 푹신해서 완전 꿀잠쓰 위치도 영동 시장쪽이라 맛집도 많고 교통도 편리하고 집 주변에 편의점이 많아서 새벽에 출출하면 뭐 사먹기도 넘 좋았구 지내는 동안 주변 맛집도 마니 알려주시고 좋은 사람들도 소개해주셔서 마치 여행 온 느낌이었어요ㅋㅋㅋㅋ 체크아웃 하는데 제 머리 떡졌다고 드라이 샴푸로 스타일링 해주던 jayㅋㅋㅋ 마음이 싱숭생숭했는데 읽어보라며 책까지 빌려주시고 (노느라 반도 못 읽었지만 다시 빌려서 읽을꺼예요ㅋㄷ) 이 세상 세심함이 아니었다는 암튼 돈 많이 벌어서 맛난거 들구 찾아갑니당"
+        },
+        {
+            "user_id": 3,
+            "user_name": "chacha",
+            "created_at": "2021-01-01T05:31:08.312Z",
+            "user_image": [],
+            "content": "논현역 근처에 가격이 싸고 무엇보다 호스트님께서 친절히 대해주셔서 좋았습니다"
+        }
+    ]
+}

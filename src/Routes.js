@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Detail from './Pages/Detail/Detail';
+import DetailMain from './Pages/Detail/DetailMain';
 import Lists from './Pages/Lists/Lists';
 import Login from './Pages/Login/Login';
 
@@ -11,6 +11,7 @@ import Order from './Pages/Order/Order';
 import Nav from './Components/Nav/Nav';
 import Nav2 from './Components/Nav/Nav2';
 import Footer from './Components/Footer/Footer';
+import DetailSaveModal from './Pages/Detail/DetailSaveModal';
 
 const Routes = () => {
   return (
@@ -19,7 +20,8 @@ const Routes = () => {
 
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route exact path="/detail" component={Detail} />
+        <Route exact path="/detail" component={DetailMain} />
+        <Route exact path="/test" component={DetailSaveModal} />
         <Route exact path="/lists" component={Lists} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/mypage" component={MyPage} />

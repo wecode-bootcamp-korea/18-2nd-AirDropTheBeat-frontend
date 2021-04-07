@@ -1,0 +1,31 @@
+.detailMap {
+  .title {
+    font-size: 22px;
+    margin: 0 150px;
+  }
+
+  .map {
+    width: 1125px;
+    height: 700px;
+    margin: 25px 150px;
+  }
+
+  .notice {
+    position: relative;
+    bottom: 50px;
+    left: 450px;
+    font-size: 13px;
+    border: 12px solid white;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    color: white;
+    background-color: black;
+    border: 5px solid black;
+    border-radius: 10px;
+  }
+}
