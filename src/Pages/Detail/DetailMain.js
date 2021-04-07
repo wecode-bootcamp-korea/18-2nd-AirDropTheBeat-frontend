@@ -8,7 +8,7 @@ import DetailMap from './DetailMap';
 import styled from 'styled-components';
 import DetailSaveModal from './DetailSaveModal';
 
-const DetailMain = () => {
+const DetailMain = props => {
   //scroll 이벤트
   let preScrollTop = window.pageYOffset;
   const [handleNav, setHandleNav] = useState(false);
@@ -53,8 +53,8 @@ const DetailMain = () => {
   return (
     <>
       {saveModal === true && <DetailSaveModal saveModal={saveModal} setSaveModal={setSaveModal} />}
-      <DetailTitle saveModal={saveModal} setSaveModal={setSaveModal} />
-      <DetailImg />
+      <DetailTitle props={props} saveModal={saveModal} setSaveModal={setSaveModal} />
+      <DetailImg props={props} />
       {handleNav && (
         <DetailNav>
           <span onClick={scrollPic}>사진</span>
@@ -64,13 +64,13 @@ const DetailMain = () => {
         </DetailNav>
       )}
       <Wrapper>
-        <DetailContents />
-        <DetailAside />
+        <DetailContents props={props} />
+        <DetailAside props={props} />
       </Wrapper>
       <BreakLine />
-      <DetailReview />
+      <DetailReview props={props} />
       <BreakLine />
-      <DetailMap />
+      <DetailMap props={props} />
     </>
   );
 };

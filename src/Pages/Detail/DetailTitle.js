@@ -6,7 +6,7 @@ import { IoMdMedal } from 'react-icons/io';
 import { FiShare } from 'react-icons/fi';
 import { AiOutlineHeart } from 'react-icons/ai';
 
-const DetailTitle = ({ saveModal, setSaveModal }) => {
+const DetailTitle = (props, saveModal, setSaveModal) => {
   const [title, setTitle] = useState('');
   const [total_average, setTotalAverage] = useState(0);
   const [counts, setCounts] = useState(0);
@@ -15,8 +15,9 @@ const DetailTitle = ({ saveModal, setSaveModal }) => {
   const [address_line, setAddressLine] = useState('');
 
   useEffect(() => {
-    // fetch(`/room/${props.match.path}`);
-    fetch('./data/DetailMockData.json')
+    console.log(props.props);
+    // fetch('./data/DetailMockData.json')
+    fetch(`/room/${props.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         setTitle(res.title);
@@ -24,8 +25,8 @@ const DetailTitle = ({ saveModal, setSaveModal }) => {
         setDistrict(res.district);
         setAddressLine(res.address_line);
       });
-    // fetch(`/room/${props.match.params.id}/review`)
-    fetch('./data/ReviewMockData.json')
+    // fetch('./data/ReviewMockData.json')
+    fetch(`/room/${props.props.match.params.id}/review`)
       .then(res => res.json())
       .then(res => {
         setTotalAverage(res.total_average);

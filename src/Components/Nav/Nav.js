@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import SelectOption from './SelectOption';
 import logo from './logo.png';
@@ -10,7 +10,7 @@ import { ImEarth } from 'react-icons/im';
 import { GiHamburgerMenu, GiPianoKeys } from 'react-icons/gi';
 import { ImAngry } from 'react-icons/im';
 import { FaSearch } from 'react-icons/fa';
-
+import { Link } from 'react-router-dom';
 export default function Nav() {
   const [location, setLocation] = useState(null);
   const [startDate, setStartDate] = useState(null);
@@ -30,6 +30,8 @@ export default function Nav() {
   const [loginModal, setLoginModal] = useState(false);
   const [signUpModal, setSignUpModal] = useState(false);
 
+  const [navDetail, setNavDetail] = useState(false);
+  const [pathname, setPathname] = useState('');
   //useHistory()
   const history = useHistory();
   // NAV : 스크롤에 따라 다르게 나타내기
@@ -37,22 +39,39 @@ export default function Nav() {
     window.scrollTo(0, 0);
     window.addEventListener('scroll', handleScrollY);
   }, []);
-
   const _location = useLocation();
   useEffect(() => {
-    if (_location.pathname !== '/') {
+    setPathname(_location.pathname);
+    if (_location.pathname.includes('detail')) {
       setNavYellow(true);
+      setNavDetail(true);
+    }
+    if (_location.pathname.includes('lists')) {
+      setNavYellow(true);
+      setNavDetail(false);
     }
   }, [_location]);
 
   const handleScrollY = () => {
-    if (_location.pathname === '/' && window.scrollY < 100) {
+    if (pathname === '/' && window.scrollY < 100) {
       setNavYellow(false);
       setNavSearch(false);
       return;
     }
-    if (_location.pathname === '/' && window.scrollY >= 100) {
+    if (pathname === '/' && window.scrollY >= 100) {
       setNavYellow(true);
+      return;
+    }
+    if (pathname.includes('lists') && window.scrollY < 100) {
+      setNavYellow(true);
+      setNavSearch(false);
+      setNavDetail(false);
+      return;
+    }
+    if (pathname.includes('lists') && window.scrollY >= 100) {
+      setNavYellow(true);
+      setNavSearch(false);
+      setNavDetail(false);
       return;
     }
   };
@@ -80,10 +99,9 @@ export default function Nav() {
       fetchData();
     }
   };
-
   const fetchData = () => {
     const query = `?city_id=1&district=${location}&checkin=${startDate}&checkout=${endDate}&adult=${adult}&child=${child}&baby=${baby}`;
-    history.push(`/room/list${query}`);
+    history.push(`/lists${query}`);
   };
   // 로그인 로그아웃
   // const handleLogin = () => {
@@ -92,7 +110,7 @@ export default function Nav() {
 
   const handleLogout = () => {
     alert('로그아웃 성공!');
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
   };
   //
 
@@ -103,7 +121,7 @@ export default function Nav() {
           <span>에어비앤비의 코로나19 대응 방안에 대한 최신 정보를 확인하세요.</span>
         </Corona>
       )}
-      <NavWrapper navYellow={navYellow}>
+      <NavWrapper navYellow={navYellow} navDetail={navDetail}>
         <Menu>
           <div>
             <img src={navYellow ? logoY : logo} alt="Logo" width="218px" />
@@ -183,6 +201,7 @@ export default function Nav() {
           </Search>
         )}
       </NavWrapper>
+      <NavPadding navYellow={navYellow} navDetail={navDetail}></NavPadding>
       {/* <NavPadding navYellow={navYellow}></NavPadding> */}
       <Login isOpen={loginModal} isOpenSignUp={setSignUpModal} isClose={setLoginModal} />
       <SignUp isOpen={signUpModal} isClose={setSignUpModal} />
@@ -197,15 +216,18 @@ const Corona = styled.aside({
   textDecoration: 'underline',
   fontWeight: 'bold',
   fontSize: '14px',
-  color: '#a3a3a3',
+  color: '#A3A3A3',
 });
 
 // const NavPadding = styled.div(({ navYellow }) => ({
 //   padding: navYellow ? '65px 0' : '',
 // }));
-const NavWrapper = styled.div(({ navYellow }) => ({
+const NavPadding = styled.div(({ navYellow, navDetail }) => ({
+  height: navYellow ? (navDetail ? '0' : '93px;') : '0',
+}));
+const NavWrapper = styled.div(({ navYellow, navDetail }) => ({
   zIndex: '7',
-  position: navYellow ? 'fixed' : 'relative',
+  position: navYellow ? (navDetail ? 'relative' : 'fixed') : 'relative',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
@@ -213,10 +235,8 @@ const NavWrapper = styled.div(({ navYellow }) => ({
   backgroundColor: navYellow ? 'white' : 'black',
   color: navYellow ? 'black' : 'white',
   paddingBottom: '10px',
-  boxShadow: '2px 7px 21px -3px rgba(67,67,67,0.45)',
-  // border: '3px solid pink',
+  boxShadow: '1px 11px 10px -5px rgba(0,0,0,0.05);',
 }));
-
 const Menu = styled.section`
   width: 100%;
   cursor: pointer;
@@ -236,51 +256,49 @@ const Menu = styled.section`
   .menuRight {
     font-size: 14px;
     font-weight: bold;
-
-    display: flex;
-    align-items: center;
-    div {
       display: flex;
-      padding: 0 10px;
       align-items: center;
-    }
-    .toggle {
-      background: white;
-      color: black;
-      border: 2px solid black;
-      border-radius: 25px;
       div {
-        padding: 7px 2px;
-      }
-      div.popup {
-        z-index: 999;
         display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 75px;
-        right: 30px;
-        width: 150px;
-        padding: 10px 0;
-        background-color: white;
-        border: 1px solid gray;
-        border-radius: 20px;
-        box-shadow: 0px 0px 10px -1px fergba(50, 50, 50, 0.31);
-        color: #222222;
-        overflow: hidden;
-
-        div {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          &:hover {
-            background: orange;
-          }
-        }
-        &.hide {
-          display: none;
-        }
+        padding: 0 10px;
+        align-items: center;
       }
-    }
+      .toggle {
+        background: white;
+        color: black;
+        border:2px solid black;
+        border-radius: 25px;
+        div {
+          padding: 7px 2px;
+        }
+        div.popup {
+          z-index:999;
+          display:flex;
+          flex-direction: column;
+          position: absolute;
+          top: 75px;
+          right: 30px;
+          width: 150px;
+          padding: 10px 0;
+          background-color: white;
+          border:1px solid gray;
+          border-radius: 20px;
+          box-shadow: 0px 0px 10px -1px fergba(50, 50, 50, 0.31);
+          color: #222222;
+          overflow: hidden;
+          div{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            &:hover{
+              background:orange;
+            }
+          }
+          &.hide {
+            display: none;
+          }
+      }
+    
   }
 `;
 

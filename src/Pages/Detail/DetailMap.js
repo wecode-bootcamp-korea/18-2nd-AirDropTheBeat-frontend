@@ -19,8 +19,8 @@ class DetailMap extends React.Component {
   }
 
   componentDidMount() {
-    // fetch(`/room/${props.match.params.id}`);
-    fetch('./data/DetailMockData.json')
+    // fetch('./data/DetailMockData.json');
+    fetch(`/room/${this.props.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
