@@ -5,7 +5,7 @@ import KakaoLogin from './KakaoLogin';
 import { AiOutlineMail, AiFillMediumSquare } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 
-const LoginMain = isOpenSignUp => {
+const LoginMain = ({ isOpenSignUp, setLoginModal }) => {
   // const { Kakao } = window;
   const history = useHistory();
   const [InputEmail, setInputEmail] = useState('');
@@ -33,7 +33,7 @@ const LoginMain = isOpenSignUp => {
   // }
 
   const sendInfo = () => {
-    fetch('http://10.58.7.202:8000/user/signin', {
+    fetch('/user/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: InputEmail,
@@ -42,9 +42,11 @@ const LoginMain = isOpenSignUp => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res.message);
+        console.log(res);
+        localStorage.setItem('access_token', res.token);
         if (res.message === 'SUCCESS') {
           alert('로그인 성공');
+          setLoginModal(false);
           history.push('/');
         } else {
           alert('로그인 실패');

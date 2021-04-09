@@ -30,7 +30,8 @@ const DetailMain = props => {
   };
 
   const scrollConv = () => {
-    window.scrollTo(0, 1170);
+    let location = document.getElementById('conv').offsetTop;
+    window.scrollTo({ top: location - 100 });
   };
 
   const scrollRev = () => {
@@ -52,28 +53,35 @@ const DetailMain = props => {
 
   return (
     <>
-      {saveModal === true && <DetailSaveModal saveModal={saveModal} setSaveModal={setSaveModal} />}
-      <DetailTitle props={props} saveModal={saveModal} setSaveModal={setSaveModal} />
-      <DetailImg props={props} />
       {handleNav && (
         <DetailNav>
-          <span onClick={scrollPic}>사진</span>
+          <span onClick={scrollPic}>사진</span>
           <span onClick={scrollConv}>편의시설</span>
-          <span onClick={scrollRev}>후기</span>
+          <span onClick={scrollRev}>후기</span>
           <span onClick={scrollLoc}>위치</span>
         </DetailNav>
       )}
-      <Wrapper>
-        <DetailContents props={props} />
-        <DetailAside props={props} />
-      </Wrapper>
-      <BreakLine />
-      <DetailReview props={props} />
-      <BreakLine />
-      <DetailMap props={props} />
+      <MainContinaer>
+        {saveModal === true && <DetailSaveModal saveModal={saveModal} setSaveModal={setSaveModal} />}
+        <DetailTitle props={props} saveModal={saveModal} setSaveModal={setSaveModal} />
+        <DetailImg props={props} />
+        <Wrapper>
+          <DetailContents props={props} />
+          <DetailAside props={props} />
+        </Wrapper>
+        <BreakLine />
+        <DetailReview props={props} />
+        <BreakLine />
+        <DetailMap props={props} />
+      </MainContinaer>
     </>
   );
 };
+
+const MainContinaer = styled.div`
+  max-width: 1550px;
+  margin: 75px auto 0 auto;
+`;
 
 const Wrapper = styled.div`
   margin: 40px 150px 40px 150px;

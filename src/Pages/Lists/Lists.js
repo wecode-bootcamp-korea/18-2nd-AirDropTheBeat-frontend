@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Rooms from './Rooms/Rooms';
 import RoomsMap from './RoomsMap/RoomsMap';
@@ -8,11 +8,20 @@ import ListStore from '../../store/ListStore';
 import LocationInfoData from './LocationInfoData';
 
 const Lists = () => {
-  const [headerInfo, setHeaderInfo] = useState('아무것도 입력되지 않았습니다.');
+  const [headerInfo, setHeaderInfo] = useState({
+    rooms_length: 0,
+    checkin: '',
+    checkout: '',
+    adult: 0,
+    child: 0,
+    baby: 0,
+    per_day: 0,
+  });
   const [lists, setLists] = useState([]);
   const [centerPosition, setCenterPosition] = useState({ lat: 37.5642135, lng: 127.0016985 });
   const [hoverIndex, setHoverIndex] = useState(null);
   const [locationInfo, setLocationInfo] = useState('');
+
   const hoverRoom = useCallback(id => {
     setHoverIndex(id);
   }, []);
@@ -20,15 +29,14 @@ const Lists = () => {
   // main에서 넘어온 지역, 예약날짜, 게스트 정보
   const roomLocation = useLocation();
   const getHeaderInfo = roomLocation.search.substr(roomLocation.search.indexOf('?') + 1).split('&');
-  console.log(getHeaderInfo);
   const defaultQuery = `${getHeaderInfo[0]}&${getHeaderInfo[1]}&${getHeaderInfo[2]}&${getHeaderInfo[3]}&${getHeaderInfo[4]}&${getHeaderInfo[5]}&${getHeaderInfo[6]}&${getHeaderInfo[7]}`;
-  console.log(defaultQuery);
+
   useEffect(() => {
-    fetch('data/listsHeader.json')
-      .then(res => res.json())
-      .then(res => {
-        setHeaderInfo(res);
-      });
+    // fetch('data/listsHeader.json')
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     setHeaderInfo(res);
+    //   });
     // fetch('data/listsRoom.json')
     //   .then(res => res.json())
     //   .then(res => {
@@ -38,13 +46,9 @@ const Lists = () => {
     fetch(`room/list?${defaultQuery}`)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setLists(res.room_list);
       });
-  }, []);
 
-  // 메인에서 지역이름 넘어올 때 요청할 부분 임시 작성 start ---------------------------------
-  useEffect(() => {
     const location = LocationInfoData();
     const getLocationInfo = element => {
       if (element.name === getHeaderInfo[1].split('=')[1]) {
@@ -53,13 +57,35 @@ const Lists = () => {
           lng: Number(element.lng),
         });
         setLocationInfo(getHeaderInfo);
-        // setLocationName(getHeaderInfo[1].split('=')[1]);
         return element.id;
       }
     };
     const getLocationId = location.find(getLocationInfo);
     console.log(getLocationId);
+    const perday = getPerDay(getHeaderInfo);
+
+    setHeaderInfo({
+      checkin: getHeaderInfo[2].split('=')[1].replaceAll('-', '~'),
+      checkout: getHeaderInfo[3].split('=')[1].replaceAll('-', '~'),
+      adult: getHeaderInfo[4].split('=')[1],
+      child: getHeaderInfo[5].split('=')[1],
+      baby: getHeaderInfo[6].split('=')[1],
+      per_day: perday,
+    });
   }, [roomLocation]);
+
+  // 날짜 차이 구하기
+  function getPerDay(getHeaderInfo) {
+    const startDay = getHeaderInfo[2].split('=')[1].split('-');
+    const endDay = getHeaderInfo[3].split('=')[1].split('-');
+    const startData = new Date(startDay[0], startDay[1], startDay[2]);
+    const endData = new Date(endDay[0], endDay[1], endDay[2]);
+    const getSecond = endData.getTime() - startData.getTime();
+    return getSecond / 1000 / 60 / 60 / 24;
+  }
+
+  // 메인에서 지역이름 넘어올 때 요청할 부분 임시 작성 start ---------------------------------
+  useEffect(() => {}, [roomLocation]);
 
   // 메인에서 지역이름 넘어올 때 요청할 부분 임시 작성 end --------------------------------
   const [currentPage, setCurrentPage] = useState(1);
@@ -90,6 +116,7 @@ const Lists = () => {
     }
   };
 
+  console.log(headerInfo);
   return (
     <Wrapper>
       <HeaderStore.Provider value={{ headerInfo }}>
@@ -104,6 +131,7 @@ const Lists = () => {
             handleArrow={handleArrow}
             setLists={setLists}
             locationInfo={locationInfo}
+            headerInfo={headerInfo}
           />
           <RoomsMap lists={currentLists} headerInfo={headerInfo} hoverIndex={hoverIndex} centerPosition={centerPosition} />
         </ListStore.Provider>
@@ -117,6 +145,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
+  margin-top: 40px;
 `;
 
 export default React.memo(Lists);

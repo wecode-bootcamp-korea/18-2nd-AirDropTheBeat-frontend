@@ -31,7 +31,11 @@ class RoomsMapApi extends React.PureComponent {
 
   handleClick = roomid => {
     console.log(roomid);
-    this.props.history.push(`/detail/${roomid}`);
+    console.log(this.props);
+    this.props.history.push({
+      pathname: `/detail/${roomid}`,
+      state: this.props.headerInfo,
+    });
   };
 
   RoomMarkerComponent = ({ room }) => {

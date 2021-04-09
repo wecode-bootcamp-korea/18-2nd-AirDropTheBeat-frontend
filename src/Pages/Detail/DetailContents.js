@@ -68,7 +68,7 @@ const DetailContents = props => {
       <Description>{description}</Description>
       <CallHost>호스트에게 연락하기</CallHost>
       <BreakLine />
-      <Title>편의시설</Title>
+      <Title id="conv">편의시설</Title>
       <Convenience>
         {conveniences?.includes('주방') && (
           <div>
@@ -113,6 +113,7 @@ const DetailContents = props => {
 
 const Wrapper = styled.section`
   width: 650px;
+  margin-right: 50px;
 `;
 
 const Title = styled.div`

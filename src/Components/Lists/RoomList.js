@@ -8,12 +8,15 @@ import { useHistory } from 'react-router-dom';
 
 const RoomList = props => {
   const history = useHistory();
-
+  console.log(props.headerInfo);
   const handleClick = (e, roomid) => {
     console.log(roomid);
     switch (e.target.dataset.clicktype) {
       case 'content':
-        history.push(`/detail/${roomid}`);
+        history.push({
+          pathname: `/detail/${roomid}`,
+          state: props.headerInfo,
+        });
         break;
       case 'like':
         // 숙소 like 눌렀을 때 찜목록으로 가도록

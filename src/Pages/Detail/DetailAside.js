@@ -4,6 +4,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { VscTag } from 'react-icons/vsc';
 
 const DetailAside = props => {
+  const [headerInfo] = useState(props.props.location.state);
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -32,8 +33,11 @@ const DetailAside = props => {
       .then(res => res.json())
       .then(res => {
         setPriceInfo(res);
-        setCheckinout(res);
-        setNumberOfGuests(res.number_of_guests);
+        setCheckinout({
+          checkin_date: headerInfo.checkin,
+          checkout_date: headerInfo.checkout,
+        });
+        setNumberOfGuests(Number(headerInfo.adult) + Number(headerInfo.child) + Number(headerInfo.baby));
       });
     // fetch('./data/ReviewMockData.json')
     fetch(`/room/${props.props.match.params.id}/review`)
@@ -64,7 +68,7 @@ const DetailAside = props => {
         <CheckBox>
           <Overall>
             <Price>
-              <Original>₩{Math.floor(priceInfo.price).toLocaleString()}</Original>
+              {priceInfo.discount_rate === !undefined && <Original>₩{Math.floor(priceInfo.price).toLocaleString()}</Original>}
               <span>₩{Math.floor(priceInfo.price * (1 - priceInfo.discount_rate)).toLocaleString()}</span>
               <Oneday>/박</Oneday>
             </Price>
@@ -96,8 +100,10 @@ const DetailAside = props => {
           <NoticeFirst>예약 확정 전에는 요금이 청구되지 않습니다.</NoticeFirst>
           <PriceDetail>
             <div>
-              <PriceDesc>₩{Math.floor(priceInfo.price * (1 - priceInfo.discount_rate)).toLocaleString()} x 2박</PriceDesc>
-              <span>₩{Math.floor(priceInfo.price * (1 - priceInfo.discount_rate) * 2).toLocaleString()}</span>
+              <PriceDesc>
+                ₩{Math.floor(priceInfo.price * (1 - priceInfo.discount_rate)).toLocaleString()} x {headerInfo.per_day}박
+              </PriceDesc>
+              <span>₩{Math.floor(priceInfo.price * (1 - priceInfo.discount_rate) * headerInfo.per_day).toLocaleString()}</span>
             </div>
             <div>
               {/* 청소비 = price * 0.2 */}
@@ -117,7 +123,10 @@ const DetailAside = props => {
             <BreakLine />
             <Total>
               <span>총 합계</span>
-              <span>₩{Math.floor(2.32 * priceInfo.price - 2 * priceInfo.price * priceInfo.discount_rate).toLocaleString()}</span>
+              {/*<span>₩{Math.floor(0.32 * priceInfo.price - 2 * priceInfo.price * priceInfo.discount_rate).toLocaleString()}</span>*/}
+              <span>
+                ₩{Math.floor((headerInfo.per_day + 0.32) * priceInfo.price - 2 * priceInfo.price * priceInfo.discount_rate).toLocaleString()}
+              </span>
             </Total>
           </PriceDetail>
         </CheckBox>

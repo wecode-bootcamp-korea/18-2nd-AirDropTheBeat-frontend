@@ -41,7 +41,17 @@ export default function Nav() {
   }, []);
   const _location = useLocation();
   useEffect(() => {
+    console.log(_location);
+
     setPathname(_location.pathname);
+    if (_location.pathname === '/') {
+      setNavYellow(false);
+      setNavDetail(false);
+    }
+    if (_location.pathname === '') {
+      setNavYellow(false);
+      setNavDetail(false);
+    }
     if (_location.pathname.includes('detail')) {
       setNavYellow(true);
       setNavDetail(true);
@@ -53,27 +63,26 @@ export default function Nav() {
   }, [_location]);
 
   const handleScrollY = () => {
-    if (pathname === '/' && window.scrollY < 100) {
+    if (window.scrollY < 100) {
       setNavYellow(false);
       setNavSearch(false);
       return;
     }
-    if (pathname === '/' && window.scrollY >= 100) {
+    if (window.scrollY >= 100) {
       setNavYellow(true);
       return;
     }
-    if (pathname.includes('lists') && window.scrollY < 100) {
-      setNavYellow(true);
-      setNavSearch(false);
-      setNavDetail(false);
-      return;
-    }
-    if (pathname.includes('lists') && window.scrollY >= 100) {
-      setNavYellow(true);
-      setNavSearch(false);
-      setNavDetail(false);
-      return;
-    }
+    // if (pathname.includes('/lists') && window.scrollY < 100) {
+    //   setNavYellow(true);
+    //   setNavSearch(false);
+    //   setNavDetail(false);
+    //   return;
+    // }
+    // if (pathname.includes('/lists') && window.scrollY >= 100) {
+    //   setNavYellow(true);
+    //   setNavSearch(false);
+    //   setNavDetail(false);
+    // }
   };
 
   //Search 메뉴 : 나타내기(클릭시, 해당 서치섹션 나타내기)
@@ -123,9 +132,9 @@ export default function Nav() {
       )}
       <NavWrapper navYellow={navYellow} navDetail={navDetail}>
         <Menu>
-          <div>
+          <Link to="/">
             <img src={navYellow ? logoY : logo} alt="Logo" width="218px" />
-          </div>
+          </Link>
           {navYellow && !navSearch ? (
             <SimpleSearch onClick={() => setNavSearch(!navSearch)}>
               <div>검색하기</div>
@@ -153,7 +162,7 @@ export default function Nav() {
                 <ImAngry size="25px" />
               </div>
               <div className={`popup ${isToggleMenu || 'hide'}`}>
-                {localStorage.getItem('token') ? (
+                {localStorage.getItem('access_token') ? (
                   <>
                     <div>여행</div>
                     <div>저장목록</div>
@@ -203,8 +212,8 @@ export default function Nav() {
       </NavWrapper>
       <NavPadding navYellow={navYellow} navDetail={navDetail}></NavPadding>
       {/* <NavPadding navYellow={navYellow}></NavPadding> */}
-      <Login isOpen={loginModal} isOpenSignUp={setSignUpModal} isClose={setLoginModal} />
-      <SignUp isOpen={signUpModal} isClose={setSignUpModal} />
+      <Login isOpen={loginModal} setLoginModal={setLoginModal} isOpenSignUp={setSignUpModal} isClose={setLoginModal} />
+      <SignUp isOpen={signUpModal} isClose={setSignUpModal} setSignUpModal={setSignUpModal} />
     </>
   );
 }
@@ -244,6 +253,9 @@ const Menu = styled.section`
   justify-content: space-between;
   align-items: center;
   padding: 0 80px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   .logo {
   }
   .menuMiddle {

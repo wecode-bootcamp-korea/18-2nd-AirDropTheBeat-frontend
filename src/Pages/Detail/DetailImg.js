@@ -30,7 +30,9 @@ const Wrapper = styled.section`
 
   img {
     width: 550px;
+    height: 450px;
     border-radius: 10px;
+    object-fit: cover;
   }
   img:hover {
     filter: brightness(95%);

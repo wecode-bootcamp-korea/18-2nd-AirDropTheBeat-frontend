@@ -27,7 +27,7 @@ const DetailReview = props => {
       });
   }, []);
 
-  const UserReviewLists = detail_reviews.map((UserReviewList, index) => (
+  const UserReviewLists = detail_reviews?.map((UserReviewList, index) => (
     <UserReview key={index}>
       <Profile>
         {detail_reviews[index]?.user_image.length <= 0 ? (
@@ -60,7 +60,7 @@ const DetailReview = props => {
             <BaseLine>
               <CalcLine subEvaluations={subEvaluations.cleanliness} />
             </BaseLine>
-            <Score>{subEvaluations.cleanliness.toFixed(1)}</Score>
+            <Score>{subEvaluations.cleanliness?.toFixed(1)}</Score>
           </div>
         </Total>
         <Total>
@@ -69,7 +69,7 @@ const DetailReview = props => {
             <BaseLine>
               <CalcLine subEvaluations={subEvaluations.accuracy} />
             </BaseLine>
-            <Score>{subEvaluations.accuracy.toFixed(1)}</Score>
+            <Score>{subEvaluations.accuracy?.toFixed(1)}</Score>
           </div>
         </Total>
         <Total>
@@ -78,7 +78,7 @@ const DetailReview = props => {
             <BaseLine>
               <CalcLine subEvaluations={subEvaluations.communication} />
             </BaseLine>
-            <Score>{subEvaluations.communication.toFixed(1)}</Score>
+            <Score>{subEvaluations.communication?.toFixed(1)}</Score>
           </div>
         </Total>
         <Total>
@@ -87,7 +87,7 @@ const DetailReview = props => {
             <BaseLine>
               <CalcLine subEvaluations={subEvaluations.location} />
             </BaseLine>
-            <Score>{subEvaluations.location.toFixed(1)}</Score>
+            <Score>{subEvaluations.location?.toFixed(1)}</Score>
           </div>
         </Total>
         <Total>
@@ -96,7 +96,7 @@ const DetailReview = props => {
             <BaseLine>
               <CalcLine subEvaluations={subEvaluations.checkin} />
             </BaseLine>
-            <Score>{subEvaluations.checkin.toFixed(1)}</Score>
+            <Score>{subEvaluations.checkin?.toFixed(1)}</Score>
           </div>
         </Total>
         <Total>
@@ -105,7 +105,7 @@ const DetailReview = props => {
             <BaseLine>
               <CalcLine subEvaluations={subEvaluations.satisfaction} />
             </BaseLine>
-            <Score>{subEvaluations.satisfaction.toFixed(1)}</Score>
+            <Score>{subEvaluations.satisfaction?.toFixed(1)}</Score>
           </div>
         </Total>
       </EvaluationItems>
