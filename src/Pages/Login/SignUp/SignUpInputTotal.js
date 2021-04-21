@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
-const SignUpInputTotal = () => {
+const SignUpInputTotal = ({ setSignUpModal }) => {
   const [signUpInput, setSignUpInput] = useState({ lastName: '', firstName: '', date: '', email: '', pw: '' });
 
   const handleChange = e => {
@@ -9,8 +10,10 @@ const SignUpInputTotal = () => {
     setSignUpInput({ ...signUpInput, [name]: value });
   };
 
+  const history = useHistory();
+
   function agreement() {
-    fetch('http://10.58.7.202:8000/user/signup', {
+    fetch('/user/signup', {
       method: 'POST',
       body: JSON.stringify({
         last_name: signUpInput.lastName,
@@ -24,6 +27,8 @@ const SignUpInputTotal = () => {
       .then(res => {
         if (res.message === 'SUCCESS') {
           alert('회원가입 성공');
+          setSignUpModal(false);
+          history.push('/');
         }
       });
   }

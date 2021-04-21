@@ -8,7 +8,7 @@ const RoomsHeader = () => {
       <p>
         <HeaderStore.Consumer>
           {HeaderStore =>
-            `${HeaderStore.headerInfo.rooms_length}개 이상의 숙소 · ${HeaderStore.headerInfo.start_data} · 게스트 ${HeaderStore.headerInfo.guest_count} 명`
+            `${HeaderStore.headerInfo.checkin} - ${HeaderStore.headerInfo.checkout} · 성인 ${HeaderStore.headerInfo.adult}명 · 어린이 ${HeaderStore.headerInfo.child}명 · 유아 ${HeaderStore.headerInfo.baby}명`
           }
         </HeaderStore.Consumer>
       </p>

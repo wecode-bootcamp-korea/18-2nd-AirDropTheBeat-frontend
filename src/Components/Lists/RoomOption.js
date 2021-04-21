@@ -124,12 +124,10 @@ function RoomOption(props) {
       queryString += `&typelist=${e}`;
     });
     queryString += `&min=${roomPrice.min}&max=${roomPrice.max}`;
-    // fetch(`room/list?`);
 
     fetch(`room/list${queryString}`)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         props.setLists(res.room_list);
       });
   };

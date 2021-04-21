@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import LoginTopNav from './LoginTopNav';
 import LoginMain from './LoginMain';
 
-function Login({ isOpen, isOpenSignUp, isClose }) {
+function Login({ isOpen, isOpenSignUp, isClose, setLoginModal }) {
   return (
     <>
       {isOpen && (
         <Modal>
           <LoginModal>
             <LoginTopNav isOpen={isOpen} isClose={isClose} />
-            <LoginMain isOpenSignUp={isOpenSignUp} />
+            <LoginMain isOpenSignUp={isOpenSignUp} setLoginModal={setLoginModal} />
           </LoginModal>
         </Modal>
       )}

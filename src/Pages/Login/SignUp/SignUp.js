@@ -4,8 +4,7 @@ import SignUpInputTotal from './SignUpInputTotal';
 import SignUpTopNav from './SignUpTopNav';
 
 function SignUp(props) {
-  const { isOpen, isClose } = props;
-
+  const { isOpen, isClose, setSignUpModal } = props;
   return (
     <>
       {isOpen && (
@@ -13,7 +12,7 @@ function SignUp(props) {
           <LoginModal>
             <SignUpTopNav isOpen={isOpen} isClose={isClose} />
             <Main>
-              <SignUpInputTotal />
+              <SignUpInputTotal setSignUpModal={setSignUpModal} />
             </Main>
           </LoginModal>
         </Modal>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import RoomsHeader from '../../../Components/Lists/RoomsHeader';
 import RoomOption from '../../../Components/Lists/RoomOption';
@@ -17,6 +17,7 @@ const Rooms = props => {
           setCurrentPage={props.setCurrentPage}
           roomsPerPage={props.roomsPerPage}
           handleArrow={props.handleArrow}
+          headerInfo={props.headerInfo}
         />
       </SmallContainer>
     </BigContainer>

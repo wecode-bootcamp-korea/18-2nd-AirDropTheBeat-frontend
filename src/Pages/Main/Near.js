@@ -9,44 +9,44 @@ const NEARIMG = [
       'https://images.unsplash.com/photo-1617538781355-7aacae1e2575?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=376&q=80',
   },
   {
-    title: '인천',
+    title: '광진구',
     desc: '차로 45분 거리',
     img:
       'https://images.unsplash.com/photo-1534278931827-8a259344abe7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
   },
   {
-    title: '의정부시',
+    title: '성동구',
     desc: '차로 30분 거리',
     img:
       'https://images.unsplash.com/photo-1530041539828-114de669390e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
   },
   {
-    title: '대구',
-    desc: '차로 4시간 거리',
+    title: '강남구',
+    desc: '차로 1시간 거리',
     img:
       'https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80',
   },
   {
-    title: '대전',
+    title: '양천구',
     desc: '차로 2시간 거리',
     img:
       'https://images.unsplash.com/photo-1503595855261-9418f48a991a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
   },
   {
-    title: '광주',
-    desc: '차로 4시간 거리',
+    title: '서초구',
+    desc: '차로 22분 거리',
     img:
       'https://images.unsplash.com/photo-1535930749574-1399327ce78f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=676&q=80',
   },
   {
-    title: '수원시',
-    desc: '차로 30분 거리',
+    title: '마포구',
+    desc: '차로 37분 거리',
     img:
       'https://images.unsplash.com/photo-1472718888560-1a1292f1cccb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
   },
   {
-    title: '울산',
-    desc: '차로 4.5시간 거리',
+    title: '중구',
+    desc: '차로 1시간 거리',
     img:
       'https://images.unsplash.com/photo-1533514114760-4389f572ae26?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=617&q=80',
   },

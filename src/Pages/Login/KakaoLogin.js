@@ -14,7 +14,7 @@ const KakaoLogin = () => {
     Kakao.Auth.login({
       success: function (authObj) {
         console.log(authObj);
-        fetch('http://10.58.7.202:8000/user/signin-kakao', {
+        fetch('/user/signin-kakao', {
           method: 'GET',
           headers: {
             Authorization: authObj.access_token,
