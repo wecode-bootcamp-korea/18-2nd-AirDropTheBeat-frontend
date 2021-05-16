@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Toggle from 'react-toggle';
 import AirbnbSlider from './RoomsSliderStyle.js';
@@ -71,10 +71,8 @@ function RoomOption(props) {
     switch (e.target.dataset.subname) {
       case 'refund':
         setToggleRefund(!toggleRefund);
-        console.log(toggleRefund);
         if (!toggleRefund === true) {
-          console.log('여기서 디비 요청');
-          //  여기서 DB요청
+          //  미구현
         }
         break;
       case 'roomAll':

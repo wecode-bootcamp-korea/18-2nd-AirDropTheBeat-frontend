@@ -13,10 +13,6 @@ class RoomsMapApi extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      defaultLocationnn: {
-        lat: 37.5642135,
-        lng: 127.0016985,
-      },
       clickIndex: null,
       toggleClick: false,
     };
@@ -30,8 +26,6 @@ class RoomsMapApi extends React.PureComponent {
   };
 
   handleClick = roomid => {
-    console.log(roomid);
-    console.log(this.props);
     this.props.history.push({
       pathname: `/detail/${roomid}`,
       state: this.props.headerInfo,
@@ -75,9 +69,7 @@ class RoomsMapApi extends React.PureComponent {
   };
 
   render() {
-    const { defaultLocationnn } = this.state;
     const { lists, headerInfo, centerPosition } = this.props;
-    console.log(centerPosition);
     return (
       <GoogleMapReact bootstrapURLKeys={{ key: process.env.API_KEY }} center={centerPosition} defaultZoom={12.5}>
         {lists.map((list, index) => {

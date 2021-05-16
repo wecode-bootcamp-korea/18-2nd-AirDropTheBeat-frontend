@@ -8,9 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 const RoomList = props => {
   const history = useHistory();
-  console.log(props.headerInfo);
   const handleClick = (e, roomid) => {
-    console.log(roomid);
     switch (e.target.dataset.clicktype) {
       case 'content':
         history.push({
@@ -19,7 +17,7 @@ const RoomList = props => {
         });
         break;
       case 'like':
-        // 숙소 like 눌렀을 때 찜목록으로 가도록
+        // 숙소 like 눌렀을 때 찜목록으로 가도록, 미구현
         break;
       default:
         break;
@@ -64,7 +62,6 @@ const ListMainContainer = styled.div`
 const ListContainer = styled.div`
   display: flex;
   align-items: center;
-  //border: 2px solid red;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
@@ -76,8 +73,6 @@ const ListImgContainer = styled.section`
   min-width: 300px;
   overflow: hidden;
   border-radius: 12px;
-  //height: 200px;
-  //border: 1px solid green;
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 100%;
@@ -104,7 +99,6 @@ const ListContentContainer = styled.section`
   width: 100%;
   height: 100%;
   margin-left: 10px;
-  //border: 1px solid blueviolet;
   overflow: hidden;
   cursor: pointer;
   @media screen and (max-width: 768px) {

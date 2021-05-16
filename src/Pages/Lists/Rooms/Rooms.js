@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import RoomsHeader from '../../../Components/Lists/RoomsHeader';
 import RoomOption from '../../../Components/Lists/RoomOption';
@@ -29,7 +29,6 @@ const BigContainer = styled.section`
   height: 100%;
   max-width: 840px;
   padding-top: 50px;
-  //border: 3px solid red;
   overflow-y: scroll;
   @media screen and (max-width: 1200px) {
     min-width: auto;

@@ -32,17 +32,6 @@ const Lists = () => {
   const defaultQuery = `${getHeaderInfo[0]}&${getHeaderInfo[1]}&${getHeaderInfo[2]}&${getHeaderInfo[3]}&${getHeaderInfo[4]}&${getHeaderInfo[5]}&${getHeaderInfo[6]}&${getHeaderInfo[7]}`;
 
   useEffect(() => {
-    // fetch('data/listsHeader.json')
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     setHeaderInfo(res);
-    //   });
-    // fetch('data/listsRoom.json')
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     setLists(res);
-    //   });
-    console.log(defaultQuery);
     fetch(`room/list?${defaultQuery}`)
       .then(res => res.json())
       .then(res => {
@@ -60,8 +49,8 @@ const Lists = () => {
         return element.id;
       }
     };
-    const getLocationId = location.find(getLocationInfo);
-    console.log(getLocationId);
+    location.find(getLocationInfo);
+
     const perday = getPerDay(getHeaderInfo);
 
     setHeaderInfo({
@@ -115,8 +104,6 @@ const Lists = () => {
         break;
     }
   };
-
-  console.log(headerInfo);
   return (
     <Wrapper>
       <HeaderStore.Provider value={{ headerInfo }}>

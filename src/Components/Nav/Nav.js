@@ -39,28 +39,6 @@ export default function Nav() {
     window.scrollTo(0, 0);
     window.addEventListener('scroll', handleScrollY);
   }, []);
-  const _location = useLocation();
-  useEffect(() => {
-    console.log(_location);
-
-    setPathname(_location.pathname);
-    if (_location.pathname === '/') {
-      setNavYellow(false);
-      setNavDetail(false);
-    }
-    if (_location.pathname === '') {
-      setNavYellow(false);
-      setNavDetail(false);
-    }
-    if (_location.pathname.includes('detail')) {
-      setNavYellow(true);
-      setNavDetail(true);
-    }
-    if (_location.pathname.includes('lists')) {
-      setNavYellow(true);
-      setNavDetail(false);
-    }
-  }, [_location]);
 
   const handleScrollY = () => {
     if (window.scrollY < 100) {
@@ -72,21 +50,11 @@ export default function Nav() {
       setNavYellow(true);
       return;
     }
-    // if (pathname.includes('/lists') && window.scrollY < 100) {
-    //   setNavYellow(true);
-    //   setNavSearch(false);
-    //   setNavDetail(false);
-    //   return;
-    // }
-    // if (pathname.includes('/lists') && window.scrollY >= 100) {
-    //   setNavYellow(true);
-    //   setNavSearch(false);
-    //   setNavDetail(false);
-    // }
   };
 
   //Search 메뉴 : 나타내기(클릭시, 해당 서치섹션 나타내기)
   const clickSearchMenu = menu => {
+    window.scrollTo(0, 0);
     setIsSearchMenu({
       ...isSearchMenu,
       isGuest: false,
