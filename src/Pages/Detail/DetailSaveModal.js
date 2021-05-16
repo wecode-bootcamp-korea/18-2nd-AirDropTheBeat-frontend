@@ -28,12 +28,9 @@ const Modal = styled.section`
   z-index: 1;
   width: 550px;
   height: 600px;
-  /* overflow: auto; */
   border: 1px solid white;
   border-radius: 20px;
   background-color: white;
-  /* display: flex;
-  justify-content: center; */
 
   button {
     background: transparent;

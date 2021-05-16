@@ -48,7 +48,6 @@ const AirbnbSlider = withStyles({
       boxShadow: '#ccc 0 2px 3px 1px',
     },
     '& .bar': {
-      // display: inline-block !important;
       height: 9,
       width: 1,
       backgroundColor: 'gray',

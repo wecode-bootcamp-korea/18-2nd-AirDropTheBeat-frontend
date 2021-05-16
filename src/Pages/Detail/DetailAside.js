@@ -5,10 +5,6 @@ import { VscTag } from 'react-icons/vsc';
 
 const DetailAside = props => {
   const [headerInfo] = useState(props.props.location.state);
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0,
-  });
 
   const [priceInfo, setPriceInfo] = useState({
     price: 0,
@@ -63,20 +59,16 @@ const DetailAside = props => {
             <InnerBox topLeft>
               <span>체크인</span>
               <div>{checkinout.checkin_date}</div>
-              {/* <div>{getParam('check_in')}</div> */}
             </InnerBox>
             <InnerBox topRight>
               <span>체크아웃</span>
               <div>{checkinout.checkout_date}</div>
-              {/* <div>{getParam("check_out")}</div> */}
             </InnerBox>
           </SmallBox>
           <InnerBox bottom modifier="bigSize">
             <span>인원</span>
             <div>게스트 {number_of_guests}명</div>
-            {/* <div>게스트 {getParam("guests")}명</div> */}
           </InnerBox>
-          {/* <ReservButton onMouseMove={e => handleMouseMove(e)} style={{ x: mousePosition.x, y: mousePosition.y }}> */}
           <ReservButton>예약하기</ReservButton>
           <NoticeFirst>예약 확정 전에는 요금이 청구되지 않습니다.</NoticeFirst>
           <PriceDetail>
@@ -104,7 +96,6 @@ const DetailAside = props => {
             <BreakLine />
             <Total>
               <span>총 합계</span>
-              {/*<span>₩{Math.floor(0.32 * priceInfo.price - 2 * priceInfo.price * priceInfo.discount_rate).toLocaleString()}</span>*/}
               <span>
                 ₩{Math.floor((headerInfo.per_day + 0.32) * priceInfo.price - 2 * priceInfo.price * priceInfo.discount_rate).toLocaleString()}
               </span>
