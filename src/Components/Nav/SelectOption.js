@@ -178,6 +178,7 @@ const SelectOption = ({
 };
 
 export default SelectOption;
+
 const LocationContainer = styled.div`
   overflow: scroll;
   padding: 20px 0;

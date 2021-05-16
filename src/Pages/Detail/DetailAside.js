@@ -10,11 +10,6 @@ const DetailAside = props => {
     y: 0,
   });
 
-  // 버튼 그라데이션 기능 구현
-  // const handleMouseMove = e => {
-  //   setMousePosition({ x: e.clientX, y: e.clientY });
-  // };
-
   const [priceInfo, setPriceInfo] = useState({
     price: 0,
     discount_rate: 0,
@@ -47,20 +42,6 @@ const DetailAside = props => {
         setCounts(res.counts);
       });
   }, []);
-
-  // // url 에서 parameter 추출
-  // function getParam(sname) {
-  //   let params = location.search.substr(location.search.indexOf('?') + 1);
-  //   let sval = '';
-  //   params = params.split('&');
-  //   for (let i = 0; i < params.length; i++) {
-  //     let temp = params[i].split('=');
-  //     if ([temp[0]] == sname) {
-  //       sval = temp[1];
-  //     }
-  //   }
-  //   return sval;
-  // }
 
   return (
     <Wrapper>

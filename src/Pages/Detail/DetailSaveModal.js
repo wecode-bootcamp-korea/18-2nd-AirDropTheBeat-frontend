@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DetailSaveModal = ({ setSaveModal }) => {
-  // console.log(saveModal);
-  // console.log(setSaveModal);
   return (
     <Wrapper>
       <Modal>

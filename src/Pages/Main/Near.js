@@ -96,8 +96,6 @@ const Section = styled.section`
 `;
 const Inputt = styled.input`
   background: ${props => (props.a ? 'pink' : 'tomato')};
-  // border: 2px solid pink;
-  // background: pink;
   height: 30px;
   width: 100px;
 `;

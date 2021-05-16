@@ -35,10 +35,6 @@ const DetailMain = props => {
   };
 
   const scrollRev = () => {
-    // // 1번 시도
-    // let location = document.getElementById('rev');
-    // location.scrollIntoView();
-    // // 2번 시도
     let location = document.getElementById('rev').offsetTop;
     window.scrollTo({ top: location - 100 });
   };

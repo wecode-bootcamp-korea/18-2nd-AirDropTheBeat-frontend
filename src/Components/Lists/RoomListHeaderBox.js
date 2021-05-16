@@ -42,7 +42,6 @@ const ContentHeaderBox = styled.div`
   position: relative;
   width: 100%;
   display: flex;
-  //border: 1px solid aqua;
 `;
 const ContentHeaderText = styled.div`
   display: block;
